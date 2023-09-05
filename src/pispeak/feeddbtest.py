@@ -3,23 +3,26 @@ import feedparser
 import sqlite3
 import os
 
-URLS = ['https://forum.devtalk.com/latest.rss',
-        'https://feeds.npr.org/1001/rss.xml',
-        'https://projects-raspberry.com/news-updates/raspberry-pi-news/feed/',
-        ]
+URLS = [
+    "https://forum.devtalk.com/latest.rss",
+    "https://feeds.npr.org/1001/rss.xml",
+    "https://projects-raspberry.com/news-updates/raspberry-pi-news/feed/",
+]
 
-if os.path.exists('feeddata.db'):
+if os.path.exists("feeddata.db"):
     read_articles = True
 else:
     read_articles = False
     print("feeddata.db database doesn't exist, creating a new database file")
-    conn = sqlite3.connect('feeddata.db')
+    conn = sqlite3.connect("feeddata.db")
     c = conn.cursor()
-    c.execute("""CREATE TABLE NewsFeeds(
+    c.execute(
+        """CREATE TABLE NewsFeeds(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT,
         link TEXT
-    );""")
+    );"""
+    )
     conn.commit()
     conn.close()
 
