@@ -46,8 +46,7 @@ def retrieve_feeds(db_name: str, urls: List) -> List:
 
             c.execute("SELECT link FROM NewsFeeds WHERE link=?", [link])
             link_exists = c.fetchone()
-            print(link_exists)
-            print(bool(link_exists))
+
             if link_exists:
                 # Record already exists in the database
                 pass
